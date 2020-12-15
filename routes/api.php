@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PhotoCollageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/photo-collages', [PhotoCollageController::class, 'index']);
+Route::post('/photo-collages', [PhotoCollageController::class, 'store']);
+Route::get('/photo-collages/{id}', [PhotoCollageController::class, 'show']);
+Route::put('/photo-collages/{id}', [PhotoCollageController::class, 'update']);
+Route::delete('/photo-collages/{id}', [PhotoCollageController::class, 'destroy']);
