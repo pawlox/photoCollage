@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/photo-collages', [PhotoCollageController::class, 'index']);
-Route::post('/photo-collages', [PhotoCollageController::class, 'store']);
-Route::get('/photo-collages/{id}', [PhotoCollageController::class, 'show']);
-Route::put('/photo-collages/{id}', [PhotoCollageController::class, 'update']);
-Route::delete('/photo-collages/{id}', [PhotoCollageController::class, 'destroy']);
+Route::middleware('auth:api')->group(function () {
+    Route::get('/photo-collages', [PhotoCollageController::class, 'index']);
+    Route::post('/photo-collages', [PhotoCollageController::class, 'store']);
+    Route::get('/photo-collages/{id}', [PhotoCollageController::class, 'show']);
+    Route::put('/photo-collages/{id}', [PhotoCollageController::class, 'update']);
+    Route::delete('/photo-collages/{id}', [PhotoCollageController::class, 'destroy']);
+});
